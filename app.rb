@@ -76,6 +76,8 @@ post '/new' do
 	redirect to '/'
 end
 
-get '/post/4' do
-  "Hello World"
+get '/details/:post_id' do
+  # получаем переменную из url'a
+	post_id = params[:post_id]
+
 end
