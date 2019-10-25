@@ -1,12 +1,16 @@
 <h2><em>Type your post</em></h2>
 <br/>
-<textarea class="form-control" rows="6" placeholder="Type post text here" style="width: 800px"></textarea>
-<br/>
-<form class="form-inline">
-  <div class="form-group">
-  	<label for="exampleInputName2">Name</label>
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="Your name">
-  </div>
-  <div class="form-group">
-  <button type="submit" class="btn btn-primary">Send comment</button>
-</form>
+<p>
+	<form action='/new' method='POST'>
+		<textarea name="content" class="form-control" rows="6" placeholder="Type post text here" style="width: 800px"></textarea>
+	<br/>
+		<div class="form-inline">
+		  <div class="form-group">
+		  	<label for="exampleInputName2">Name</label>
+		    <input name="username" type="text" class="form-control" id="exampleInputName2" placeholder="Your name">
+		  </div>
+		  <div class="form-group">
+		  <button type="submit" class="btn btn-primary">Send comment</button>
+		</div>
+	</form>
+</p>
