@@ -2,7 +2,14 @@
 <br/>
 <p>
 	<br/>
-	<p class="text-center"><%= @post_detail['content'] %></p>
+	<%= @post_detail['content'] %>
 	<br/>
-	<span style="font-size: 80%; color: #555"><p class="text-center">Added at <%= @post_detail['created_date'] %></p></span>
+	<span style="font-size: 80%; color: #555">Added at <%= @post_detail['created_date'] %></span>
 </p>
+<br/>
+<h4>Comment:</h4>
+<form action='/details/<%= @post_detail['id'] %>' method='POST'>
+	<textarea name="content" class="form-control" rows="6" placeholder="Type comment text here" style="width: 800px" value="<%= @content %>"></textarea>
+	<br/>
+	<button type="submit" class="btn btn-primary">Send comment</button>
+</form>
