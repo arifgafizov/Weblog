@@ -38,13 +38,34 @@ get '/new' do
 end
 
 post '/new' do
-	content = params[:content]
-	username = params[:username]
+	@content = params[:content]
+	@username = params[:username]
+
+	#if content.length < 1
+	#	@error = 'Type post text'
+	#	return erb :new
+	#elsif username.length < 1
+	#	@error = 'Type your name'
+	#	return erb :new
+	#end
+
+	# сохранение ввода при не полном заполнении данных
+	hh = {
+		:content => 'Type post text',
+		:username => 'Type your name'
+		}
+
+
+	@error = hh.select {|key,_| params[key] == ""}.values.join(", ")
+
+	if @error != ""
+		return erb :new
+	end
+
   
   	# сохранение данных в БД
 
-	@db.execute 'insert into Posts (content, created_date, username) values (?, datetime(), ?)', [content, username]
+	@db.execute 'insert into Posts (content, created_date, username) values (?, datetime(), ?)', [@content, @username]
 	
 	#erb "#{username}"
-  	erb "#{content} - #{username}"
 end
