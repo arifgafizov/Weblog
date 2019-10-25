@@ -9,3 +9,10 @@ end
 get '/new' do
   erb :new
 end
+
+post '/new' do
+	content = params[:content]
+	username = params[:username]
+  
+  	erb "#{content} - #{username}"
+end
