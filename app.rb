@@ -33,7 +33,7 @@ get '/' do
 	# выбираем список постов из БД
 
 	@results = @db.execute 'select * from Posts order by id desc'
-	
+
 	erb :index			
 end
 
@@ -74,4 +74,8 @@ post '/new' do
 	# перенаправление на главную страницу
 
 	redirect to '/'
+end
+
+get '/post/4' do
+  "Hello World"
 end

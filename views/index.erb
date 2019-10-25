@@ -5,9 +5,11 @@
 		<br/>
 		<p class="text-center"><%= post['content'] %></p>
 		<br/>
-		<span style="font-size: 100%; color: #428bca"><p class="text-center"><%= post['username'] %></p></span>
+		<span style="font-size: 100%; color: #5bc0de"><strong><p class="text-center"><%= post['username'] %></p></strong></span>
 		<br/>
 		<span style="font-size: 80%; color: #999%"><p class="text-center">Added at <%= post['created_date'] %></p></span>
-
+		<br/>
+		<br/>
+		<p class="text-center"><a href="/post/<%= post['id'] %>">Comments</a></p>
 	</p>
 <% end %>
