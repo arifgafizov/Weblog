@@ -1,12 +1,13 @@
-<h2><em>Latest posts:</em></h2>
+<h2 class="text-center"><em>Latest posts:</em></h2>
 <br/>
 <% @results.each do |post| %>
 	<p>
 		<br/>
-		<%= post['content'] %>
+		<p class="text-center"><%= post['content'] %></p>
 		<br/>
-		<%= post['username'] %>
+		<span style="font-size: 100%; color: #428bca"><p class="text-center"><%= post['username'] %></p></span>
 		<br/>
-		<%= post['created_date'] %>
+		<span style="font-size: 80%; color: #999%"><p class="text-center">Added at <%= post['created_date'] %></p></span>
+
 	</p>
 <% end %>

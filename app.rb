@@ -71,8 +71,7 @@ post '/new' do
 
 	@db.execute 'insert into Posts (content, created_date, username) values (?, datetime(), ?)', [@content, @username]
 	
-	# перенаправление на страницу поста
+	# перенаправление на главную страницу
 
-	#redirect to('/details/' + post_id)
-	#erb "#{username}"
+	redirect to '/'
 end
