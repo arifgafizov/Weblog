@@ -41,5 +41,10 @@ post '/new' do
 	content = params[:content]
 	username = params[:username]
   
+  	# сохранение данных в БД
+
+	@db.execute 'insert into Posts (content, created_date, username) values (?, datetime(), ?)', [content, username]
+	
+	#erb "#{username}"
   	erb "#{content} - #{username}"
 end
