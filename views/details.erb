@@ -7,7 +7,17 @@
 	<span style="font-size: 80%; color: #555">Added at <%= @post_detail['created_date'] %></span>
 </p>
 <br/>
-<h4>Comment:</h4>
+<h4>Comments:</h4>
+<% @comments.each do |comment| %>
+	<p>
+		<%= comment['content'] %>
+		<br/>
+		<span style="font-size: 80%; color: #999">Added at <%= comment['created_date'] %></span>
+		<br/>
+	</p>
+	<hr/>
+<% end %>
+
 <form action='/details/<%= @post_detail['id'] %>' method='POST'>
 	<textarea name="content" class="form-control" rows="6" placeholder="Type comment text here" style="width: 800px" value="<%= @content %>"></textarea>
 	<br/>
