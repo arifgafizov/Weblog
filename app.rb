@@ -6,7 +6,7 @@ require 'sqlite3'
 def init_db
 	@db = SQLite3::Database.new 'weblog.db'
 	# возвращает результат как хеш а не массив
-	@db.results_as_hash = true 
+	@db.results_as_hash = true
 end
 
 # before вызывается каждый раз при перезагрузке
@@ -34,7 +34,7 @@ get '/' do
 
 	@results = @db.execute 'select * from Posts order by id desc'
 
-	erb :index			
+	erb :index
 end
 
 get '/new' do
@@ -66,11 +66,11 @@ post '/new' do
 		return erb :new
 	end
 
-  
+
   	# сохранение данных в БД
 
 	@db.execute 'insert into Posts (content, created_date, username) values (?, datetime(), ?)', [@content, @username]
-	
+
 	# перенаправление на главную страницу
 
 	redirect to '/'
@@ -83,9 +83,19 @@ get '/details/:post_id' do
 	# получаем список постов
 	# (у нас будет только один пост)
 	results = @db.execute 'select * from Posts where id = ?', [post_id]
-	
+
 	# выбираем этот один пост в переменную @row
 	@post_detail = results[0]
 
 	erb :details
+end
+
+post '/details/:post_id' do
+		# получаем переменную из url'a
+		post_id = params[:post_id]
+		# получаем переменную из пост запроса
+		content = params[:content]
+
+		erb "You typed comment #{content} for post: #{post_id}"
+
 end
